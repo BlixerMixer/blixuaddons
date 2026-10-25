@@ -1,0 +1,35 @@
+{
+	"schemaVersion": 1,
+	"id": "blixuaddons",
+	"version": "${version}",
+	"name": "blixuAddons",
+	"description": "Blixu's collection of Minecraft additions.",
+	"authors": [
+		"Blixu"
+	],
+	"contact": {},
+	"license": "All-Rights-Reserved",
+	"icon": "assets/blixuaddons/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.blixu.blixuaddons.BlixuAddons"
+		],
+		"client": [
+			"com.blixu.blixuaddons.client.BlixuAddonsClient"
+		]
+	},
+	"mixins": [
+		"blixuaddons.mixins.json",
+		{
+			"config": "blixuaddons.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~26.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

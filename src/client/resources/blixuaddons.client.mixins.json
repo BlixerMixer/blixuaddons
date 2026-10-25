@@ -1,0 +1,45 @@
+{
+	"required": true,
+	"package": "com.blixu.blixuaddons.client.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"client": [
+		"AlwaysFocusedMixin",
+		"AvatarHandMixin",
+		"AvatarSpinMixin",
+		"CameraMixin",
+		"ClientPacketListenerMixin",
+		"EffectFogMixin",
+		"EntityRenderSkipMixin",
+		"EntityRendererInvoker",
+		"WeatherRenderMixin",
+		"EntityRendererGlowMixin",
+		"FogRendererMixin",
+		"GameRendererHandGlowMixin",
+		"GameRendererMixin",
+		"GuiGraphicsAccessor",
+		"HudMixin",
+		"HudOverlaysMixin",
+		"ItemInHandRendererMixin",
+		"ItemLayerMixin",
+		"LevelRendererGlowMixin",
+		"LightmapMixin",
+		"LivingEntityDamageMixin",
+		"LivingEntityRendererMixin",
+		"LivingEntitySwingMixin",
+		"MinecraftGlowMixin",
+		"ModelFeatureRendererMixin",
+		"MouseHandlerMixin",
+		"OutlineDepthMixin",
+		"ParticleEngineMixin",
+		"PostChainAccessor",
+		"PostPassAccessor",
+		"PostPassMixin",
+		"ScreenEffectRendererMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

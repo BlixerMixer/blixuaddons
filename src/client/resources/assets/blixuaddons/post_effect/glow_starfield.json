@@ -1,0 +1,1508 @@
+{
+  "targets": {
+    "mask": {},
+    "edge": {},
+    "tmp": {},
+    "aura": {},
+    "dist": {}
+  },
+  "passes": [
+    {
+      "vertex_shader": "blixuaddons:core/screenquad",
+      "fragment_shader": "blixuaddons:post/copy",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "minecraft:entity_outline"
+        }
+      ],
+      "output": "mask",
+      "uniforms": {
+        "BlitConfig": [
+          {
+            "name": "ColorModulate",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "vertex_shader": "blixuaddons:core/screenquad",
+      "fragment_shader": "blixuaddons:post/neon_edge",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "mask"
+        }
+      ],
+      "output": "edge",
+      "uniforms": {
+        "NeonEdge": [
+          {
+            "name": "Thickness",
+            "type": "float",
+            "value": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "vertex_shader": "blixuaddons:core/screenquad",
+      "fragment_shader": "blixuaddons:post/glow_dist",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "mask"
+        },
+        {
+          "sampler_name": "Depth",
+          "target": "minecraft:entity_outline",
+          "use_depth_buffer": true
+        }
+      ],
+      "output": "dist",
+      "uniforms": {
+        "DistConfig": [
+          {
+            "name": "Radius",
+            "type": "float",
+            "value": 48.0
+          },
+          {
+            "name": "PxPerBlock",
+            "type": "float",
+            "value": 270.0
+          },
+          {
+            "name": "Near",
+            "type": "float",
+            "value": 0.05
+          },
+          {
+            "name": "Far",
+            "type": "float",
+            "value": 512.0
+          }
+        ],
+        "GlowConfig": [
+          {
+            "name": "FillA0",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA1",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA2",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA3",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA4",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA5",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA6",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA7",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA8",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA9",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA10",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA11",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA12",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA13",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA14",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA15",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "Outer0",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer1",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer2",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer3",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer4",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer5",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer6",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer7",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer8",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer9",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer10",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer11",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer12",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer13",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer14",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer15",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Look0",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look1",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look2",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look3",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look4",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look5",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look6",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look7",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look8",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look9",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look10",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look11",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look12",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look13",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look14",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look15",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Global",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "FillB0",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB1",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB2",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB3",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB4",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB5",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB6",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB7",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB8",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB9",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB10",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB11",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB12",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB13",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB14",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB15",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "vertex_shader": "blixuaddons:core/screenquad",
+      "fragment_shader": "blixuaddons:post/neon_blur",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "dist",
+          "bilinear": true
+        }
+      ],
+      "output": "tmp",
+      "uniforms": {
+        "BlurConfig": [
+          {
+            "name": "BlurDir",
+            "type": "vec2",
+            "value": [
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Radius",
+            "type": "float",
+            "value": 5.0
+          }
+        ]
+      }
+    },
+    {
+      "vertex_shader": "blixuaddons:core/screenquad",
+      "fragment_shader": "blixuaddons:post/neon_blur",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "tmp",
+          "bilinear": true
+        }
+      ],
+      "output": "aura",
+      "uniforms": {
+        "BlurConfig": [
+          {
+            "name": "BlurDir",
+            "type": "vec2",
+            "value": [
+              0,
+              1
+            ]
+          },
+          {
+            "name": "Radius",
+            "type": "float",
+            "value": 5.0
+          }
+        ]
+      }
+    },
+    {
+      "vertex_shader": "blixuaddons:core/screenquad",
+      "fragment_shader": "blixuaddons:post/glow_starfield",
+      "inputs": [
+        {
+          "sampler_name": "Edge",
+          "target": "edge"
+        },
+        {
+          "sampler_name": "Aura",
+          "target": "aura",
+          "bilinear": true
+        },
+        {
+          "sampler_name": "Mask",
+          "target": "mask",
+          "bilinear": false
+        },
+        {
+          "sampler_name": "Dist",
+          "target": "dist",
+          "bilinear": false
+        }
+      ],
+      "output": "minecraft:entity_outline",
+      "uniforms": {
+        "DistConfig": [
+          {
+            "name": "Radius",
+            "type": "float",
+            "value": 48.0
+          },
+          {
+            "name": "PxPerBlock",
+            "type": "float",
+            "value": 270.0
+          },
+          {
+            "name": "Near",
+            "type": "float",
+            "value": 0.05
+          },
+          {
+            "name": "Far",
+            "type": "float",
+            "value": 512.0
+          }
+        ],
+        "GlowConfig": [
+          {
+            "name": "FillA0",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA1",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA2",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA3",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA4",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA5",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA6",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA7",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA8",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA9",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA10",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA11",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA12",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA13",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA14",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "FillA15",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "Outer0",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer1",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer2",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer3",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer4",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer5",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer6",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer7",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer8",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer9",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer10",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer11",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer12",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer13",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer14",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Outer15",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Look0",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look1",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look2",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look3",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look4",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look5",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look6",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look7",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look8",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look9",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look10",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look11",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look12",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look13",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look14",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Look15",
+            "type": "vec4",
+            "value": [
+              1,
+              0.5,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Global",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "FillB0",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB1",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB2",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB3",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB4",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB5",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB6",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB7",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB8",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB9",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB10",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB11",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB12",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB13",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB14",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "FillB15",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              0
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

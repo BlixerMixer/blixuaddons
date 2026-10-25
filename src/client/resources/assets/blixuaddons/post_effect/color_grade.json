@@ -1,0 +1,89 @@
+{
+  "targets": {
+    "swap": {}
+  },
+  "passes": [
+    {
+      "vertex_shader": "blixuaddons:core/screenquad",
+      "fragment_shader": "blixuaddons:post/color_grade",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "minecraft:main",
+          "bilinear": false
+        }
+      ],
+      "output": "swap",
+      "uniforms": {
+        "GradeConfig": [
+          {
+            "name": "A",
+            "type": "vec4",
+            "value": [
+              0,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "B",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "C",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "name": "D",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "vertex_shader": "blixuaddons:core/screenquad",
+      "fragment_shader": "blixuaddons:post/copy",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "swap",
+          "bilinear": false
+        }
+      ],
+      "output": "minecraft:main",
+      "uniforms": {
+        "BlitConfig": [
+          {
+            "name": "ColorModulate",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

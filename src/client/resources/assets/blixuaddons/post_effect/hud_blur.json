@@ -1,0 +1,59 @@
+{
+  "targets": {
+    "swap": {}
+  },
+  "passes": [
+    {
+      "vertex_shader": "blixuaddons:core/screenquad",
+      "fragment_shader": "blixuaddons:post/hud_blur",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "minecraft:main",
+          "bilinear": true
+        }
+      ],
+      "output": "swap",
+      "uniforms": {
+        "HudBlurConfig": [
+          {
+            "name": "Dir",
+            "type": "vec4",
+            "value": [
+              1,
+              0,
+              6,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "vertex_shader": "blixuaddons:core/screenquad",
+      "fragment_shader": "blixuaddons:post/hud_blur",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "swap",
+          "bilinear": true
+        }
+      ],
+      "output": "minecraft:main",
+      "uniforms": {
+        "HudBlurConfig": [
+          {
+            "name": "Dir",
+            "type": "vec4",
+            "value": [
+              0,
+              1,
+              6,
+              0
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

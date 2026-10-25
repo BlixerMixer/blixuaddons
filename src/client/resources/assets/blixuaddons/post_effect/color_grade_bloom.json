@@ -1,0 +1,205 @@
+{
+  "targets": {
+    "swap": {},
+    "bright": {},
+    "blur_a": {},
+    "blur_b": {}
+  },
+  "passes": [
+    {
+      "vertex_shader": "blixuaddons:core/screenquad",
+      "fragment_shader": "blixuaddons:post/bloom_bright",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "minecraft:main",
+          "bilinear": true
+        }
+      ],
+      "output": "bright",
+      "uniforms": {
+        "GradeConfig": [
+          {
+            "name": "A",
+            "type": "vec4",
+            "value": [
+              0,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "B",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "C",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "name": "D",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "vertex_shader": "blixuaddons:core/screenquad",
+      "fragment_shader": "blixuaddons:post/hud_blur",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "bright",
+          "bilinear": true
+        }
+      ],
+      "output": "blur_a",
+      "uniforms": {
+        "HudBlurConfig": [
+          {
+            "name": "Dir",
+            "type": "vec4",
+            "value": [
+              1,
+              0,
+              8,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "vertex_shader": "blixuaddons:core/screenquad",
+      "fragment_shader": "blixuaddons:post/hud_blur",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "blur_a",
+          "bilinear": true
+        }
+      ],
+      "output": "blur_b",
+      "uniforms": {
+        "HudBlurConfig": [
+          {
+            "name": "Dir",
+            "type": "vec4",
+            "value": [
+              0,
+              1,
+              8,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "vertex_shader": "blixuaddons:core/screenquad",
+      "fragment_shader": "blixuaddons:post/color_grade_bloom",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "minecraft:main",
+          "bilinear": false
+        },
+        {
+          "sampler_name": "Bloom",
+          "target": "blur_b",
+          "bilinear": true
+        }
+      ],
+      "output": "swap",
+      "uniforms": {
+        "GradeConfig": [
+          {
+            "name": "A",
+            "type": "vec4",
+            "value": [
+              0,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "B",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "C",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "name": "D",
+            "type": "vec4",
+            "value": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "vertex_shader": "blixuaddons:core/screenquad",
+      "fragment_shader": "blixuaddons:post/copy",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "swap",
+          "bilinear": false
+        }
+      ],
+      "output": "minecraft:main",
+      "uniforms": {
+        "BlitConfig": [
+          {
+            "name": "ColorModulate",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
